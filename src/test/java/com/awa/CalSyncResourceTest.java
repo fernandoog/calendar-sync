@@ -14,7 +14,7 @@ class CalSyncResourceTest {
           .when().get("/sync")
           .then()
              .statusCode(200)
-             .body(is("Hello from Quarkus REST"));
+             .body(is("Sincronización completada manualmente"));
     }
 
 }
