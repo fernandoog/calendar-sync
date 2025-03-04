@@ -1,0 +1,22 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/calendar-sync', '.']
+    env:
+      - 'DOCKER_BUILDKIT=1'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/calendar-sync']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'calendar-sync'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/calendar-sync'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-central1'
+      - '--allow-unauthenticated'
+images:
+  - 'gcr.io/$PROJECT_ID/calendar-sync'
