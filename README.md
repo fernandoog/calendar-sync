@@ -60,3 +60,7 @@ If you want to learn more about building native executables, please consult <htt
 Easily start your REST Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+```shell script
+gcloud functions deploy calendar-sync --entry-point=io.quarkus.gcp.functions.http.QuarkusHttpFunction --runtime=java21 --trigger-http --allow-unauthenticated --source=target/deployment
+```
