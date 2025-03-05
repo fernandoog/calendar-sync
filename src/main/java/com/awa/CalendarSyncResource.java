@@ -34,11 +34,11 @@ public class CalendarSyncResource {
     private void performSync() {
         try {
             // Obtener reservas de Booking
-            String bookingEvents = bookingApiClient.getBookings();
-            LOGGER.info("Datos obtenidos de Booking: " + bookingEvents);
+            // String bookingEvents = bookingApiClient.getBookings();
+            LOGGER.info("Datos obtenidos de Booking: ");
 
             // Pasar los datos al calendario de Google
-            googleCalendarApiClient.createEvent(bookingEvents);
+            // googleCalendarApiClient.createEvent(bookingEvents);
             LOGGER.info("Datos sincronizados con Google Calendar.");
         } catch (Exception e) {
             LOGGER.severe("Error durante la sincronización: " + e.getMessage());
